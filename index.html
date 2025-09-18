@@ -8,15 +8,26 @@
 </head>
 <body>
     <div class="center-container">
-        <h1 class="main-title">Nepali Yuwa Portal</h1>
-        <p class="subtitle">Visit</p>
+        <h1 class="main-title">Visit</h1>
         <div class="btn-group">
-            <a href="/kokaskojhole/" class="main-btn">Ko Kasko Jhole?</a>
-            <a href="/bhrastachari" class="main-btn">Bhrastachari</a>
-            <a href="/chorlutera" class="main-btn">Chor Lutera</a>
-            <a href="/kboleko" class="main-btn">K Boleko?</a>
-            <a href="/khaikaamgareko" class="main-btn">Khai Kaam Gareko?</a>
+            <h1 class="main-title" style="text-align:center;">Visit</h1>
+            <div class="btn-group">
+                <a href="/kokaskojhole/" class="main-btn">Ko Kasko Jhole?</a>
+                <a href="/bhrastachari" class="main-btn">Bhrastachari</a>
+                <a href="/chorlutera" class="main-btn">Chor Lutera</a>
+                <a href="/kboleko" class="main-btn">K Boleko?</a>
+                <a href="/khaikaamgareko" class="main-btn">Khai Kaam Gareko?</a>
+            </div>
         </div>
     </div>
 </body>
+        <!-- Messenger Chat Plugin -->
+        <div id="fb-root"></div>
+        <div id="fb-customer-chat" class="fb-customerchat"></div>
+        <script>
+            var chatbox = document.getElementById('fb-customer-chat');
+            chatbox.setAttribute("page_id", "YOUR_PAGE_ID"); // Replace YOUR_PAGE_ID with your Facebook Page ID
+            chatbox.setAttribute("attribution", "biz_inbox");
+        </script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js"></script>
 </html>

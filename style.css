@@ -14,7 +14,7 @@ h1 {
 .center-container {
     text-align: center;
 }
-.kokas-btn {
+.main-btn {
     display: inline-block;
     margin-top: 2rem;
     padding: 1rem 2.5rem;
@@ -27,7 +27,7 @@ h1 {
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     transition: background 0.3s, transform 0.2s;
 }
-.kokas-btn:hover {
+.main-btn:hover {
     background: linear-gradient(90deg,#0056b3 0%,#007bff 100%);
     transform: scale(1.05);
 }

@@ -141,3 +141,173 @@ body {
     border-radius: 15px;
     margin-top: 20px;
 }
+
+/* Election Counter Styles */
+.election-counter-section {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.election-counter-container {
+    background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #3c5061;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+}
+
+.election-counter-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #42b883, #64d4a4, #42b883);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.election-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f0f0f0;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.election-subtitle {
+    font-size: 16px;
+    color: #42b883;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.countdown-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #f0f0f0;
+    background: linear-gradient(135deg, #42b883, #64d4a4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 8px rgba(66, 184, 131, 0.3);
+    margin-bottom: 5px;
+    font-family: 'Roboto', monospace;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+}
+
+.countdown-number:hover {
+    transform: scale(1.05);
+}
+
+.countdown-label {
+    font-size: 14px;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.countdown-separator {
+    font-size: 24px;
+    color: #42b883;
+    font-weight: 700;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.election-message {
+    margin-top: 15px;
+}
+
+.election-message p {
+    font-size: 14px;
+    color: #e0e0e0;
+    font-style: italic;
+    margin: 0;
+    padding: 10px 15px;
+    background: rgba(66, 184, 131, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid #42b883;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .election-counter-container {
+        padding: 20px 15px;
+        margin: 0 10px;
+    }
+    
+    .election-title {
+        font-size: 20px;
+    }
+    
+    .countdown-number {
+        font-size: 28px;
+    }
+    
+    .countdown-container {
+        gap: 12px;
+    }
+    
+    .countdown-item {
+        min-width: 50px;
+    }
+    
+    .countdown-separator {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-container {
+        gap: 8px;
+    }
+    
+    .countdown-number {
+        font-size: 24px;
+    }
+    
+    .countdown-separator {
+        font-size: 16px;
+    }
+    
+    .election-title {
+        font-size: 18px;
+    }
+}

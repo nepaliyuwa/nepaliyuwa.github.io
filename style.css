@@ -1,6 +1,8 @@
 body {
-    background-color: #0b1a2a;
-    color: #f0f0f0;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #ffffff 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #0f172a;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -8,7 +10,28 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding-top: 100px; /* Adjust this value to move content up or down */
+    padding-top: 80px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(52, 211, 153, 0.10) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(251, 191, 36, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .header {
@@ -21,18 +44,34 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
-    color: #42b883;
+    background: linear-gradient(135deg, #60a5fa, #34d399, #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
+    animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.2); }
 }
 
 .main-container {
     text-align: center;
     max-width: 800px;
     width: 90%;
+    position: relative;
+    z-index: 5;
 }
 
 .main-content {
@@ -40,73 +79,111 @@ body {
 }
 
 .main-title {
-    font-size: 40px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #f0f0f0;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #0f172a, #1f2937, #334155);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
 }
 
 .subtitle {
-    font-size: 20px;
-    color: #a0a0a0;
-    margin-bottom: 40px;
+    font-size: 16px;
+    color: #475569;
+    margin-bottom: 0px;
+    font-weight: 400;
+    opacity: 0.9;
+    letter-spacing: 0.01em;
 }
 
 .search-section {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    margin-top: 70px;
 }
 
 .search-form {
     display: flex;
-    width: 100%;
-    border-radius: 50px;
-    background-color: #172a3a;
+    width: 70%;
+    max-width: 500px;
+    border-radius: 60px;
+    background: #ffffff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(15, 23, 42, 0.08);
     overflow: hidden;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    transition: all 0.3s ease;
+}
+
+.search-form:focus-within {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 8px 28px rgba(59, 130, 246, 0.15);
+    transform: translateY(-2px);
 }
 
 .search-input {
     flex-grow: 1;
-    padding: 15px 25px;
+    padding: 18px 30px;
     border: none;
     background: transparent;
-    color: #f0f0f0;
+    color: #0f172a;
     font-size: 16px;
     outline: none;
+    font-weight: 400;
 }
 
 .search-input::placeholder {
-    color: #a0a0a0;
+    color: #94a3b8;
+    font-weight: 400;
 }
 
 .build-btn {
-    padding: 15px 30px;
+    padding: 18px 35px;
     border: none;
-    background-color: #42b883;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
     color: #fff;
     font-size: 16px;
-    font-weight: 500;
-    border-radius: 50px;
+    font-weight: 600;
+    border-radius: 60px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .build-btn:hover {
-    background-color: #338a68;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .links-title {
-    font-size: 16px;
-    color: #a0a0a0;
-    margin-bottom: 20px;
+    font-size: 15px;
+    color: #cbd5e1;
+    margin-bottom: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 .link-group {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
+    flex-wrap: nowrap;
+    gap: 25px;
+    padding: 15px 0;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.link-group::-webkit-scrollbar {
+    display: none;
 }
 
 .link-item {
@@ -114,30 +191,54 @@ body {
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: #a0a0a0;
-    transition: color 0.3s ease;
+    color: #475569;
+    transition: all 0.3s ease;
+    padding: 12px 16px;
+    border-radius: 12px;
+    min-width: 100px;
+    max-width: 120px;
+    position: relative;
+    flex-shrink: 0;
 }
 
 .link-item:hover {
-    color: #42b883;
+    color: #60a5fa;
+    transform: translateY(-3px);
+    background: rgba(96, 165, 250, 0.1);
+    border-radius: 12px;
 }
 
 .link-icon {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #3c5061;
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgba(96, 165, 250, 0.4);
     border-radius: 50%;
-    margin-bottom: 10px;
-    background-color: #27384a;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(52, 211, 153, 0.15));
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.link-item:hover .link-icon {
+    border-color: rgba(96, 165, 250, 0.8);
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.25), rgba(52, 211, 153, 0.25));
+    transform: scale(1.05);
+}
+
+.link-text {
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.2;
 }
 
 .graph-section {
     width: 90%;
     height: 600px; /* Adjust height as needed for your graph */
-    background-color: #172a3a;
+    background-color: #e2e8f0;
     border-radius: 15px;
     margin-top: 20px;
 }
@@ -145,21 +246,22 @@ body {
 /* Election Counter Styles */
 .election-counter-section {
     width: 100%;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: center;
 }
 
 .election-counter-container {
-    background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
-    border-radius: 15px;
-    padding: 25px;
+    background: #ffffff;
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 35px;
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid #3c5061;
-    max-width: 500px;
-    width: 90%;
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    max-width: 600px;
+    width: 95%;
     position: relative;
     overflow: hidden;
 }
@@ -171,9 +273,9 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #42b883, #64d4a4, #42b883);
-    background-size: 200% 100%;
-    animation: gradientShift 3s ease-in-out infinite;
+    background: linear-gradient(90deg, #60a5fa, #34d399, #fbbf24, #60a5fa);
+    background-size: 300% 100%;
+    animation: gradientShift 4s ease-in-out infinite;
 }
 
 @keyframes gradientShift {
@@ -182,17 +284,20 @@ body {
 }
 
 .election-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
-    color: #f0f0f0;
-    margin-bottom: 8px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #0f172a, #334155);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 4px rgba(15, 23, 42, 0.12);
 }
 
 .election-subtitle {
-    font-size: 16px;
-    color: #42b883;
-    margin-bottom: 20px;
+    font-size: 18px;
+    color: #60a5fa;
+    margin-bottom: 25px;
     font-weight: 500;
 }
 
@@ -200,8 +305,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 20px;
+    margin-bottom: 25px;
     flex-wrap: wrap;
 }
 
@@ -209,41 +314,35 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 60px;
+    min-width: 70px;
 }
 
 .countdown-number {
     font-size: 32px;
     font-weight: 700;
-    color: #f0f0f0;
-    background: linear-gradient(135deg, #42b883, #64d4a4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 4px 8px rgba(66, 184, 131, 0.3);
-    margin-bottom: 5px;
+    color: #0f172a;
+    text-shadow: 0 2px 3px rgba(15, 23, 42, 0.08);
+    margin-bottom: 8px;
     font-family: 'Roboto', monospace;
     letter-spacing: 1px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .countdown-number:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    filter: brightness(1.2);
 }
 
 .countdown-label {
-    font-size: 14px;
-    color: #a0a0a0;
+    font-size: 12px;
+    color: #94a3b8;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 500;
+    letter-spacing: 1.5px;
+    font-weight: 600;
 }
 
 .countdown-separator {
-    font-size: 24px;
-    color: #42b883;
-    font-weight: 700;
-    animation: pulse 2s ease-in-out infinite;
+    display: none;
 }
 
 @keyframes pulse {
@@ -257,24 +356,27 @@ body {
 
 .election-message p {
     font-size: 14px;
-    color: #e0e0e0;
+    color: #334155;
     font-style: italic;
     margin: 0;
-    padding: 10px 15px;
-    background: rgba(66, 184, 131, 0.1);
-    border-radius: 8px;
-    border-left: 3px solid #42b883;
+    padding: 12px 20px;
+    background: rgba(96, 165, 250, 0.08);
+    border-radius: 10px;
+    border-left: 4px solid #60a5fa;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.06);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .election-counter-container {
-        padding: 20px 15px;
+        padding: 25px 20px;
         margin: 0 10px;
+        max-width: 90%;
     }
     
     .election-title {
-        font-size: 20px;
+        font-size: 24px;
     }
     
     .countdown-number {
@@ -282,32 +384,60 @@ body {
     }
     
     .countdown-container {
-        gap: 12px;
+        gap: 15px;
     }
     
     .countdown-item {
-        min-width: 50px;
+        min-width: 60px;
     }
     
     .countdown-separator {
-        font-size: 20px;
+        font-size: 24px;
+    }
+    
+    .link-group {
+        gap: 20px;
+        max-width: 100%;
+        padding: 10px 0;
+    }
+    
+    .link-item {
+        min-width: 90px;
+        padding: 10px 14px;
+    }
+    
+    .link-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .link-text {
+        font-size: 11px;
     }
 }
 
 @media (max-width: 480px) {
     .countdown-container {
-        gap: 8px;
+        gap: 6px;
     }
     
     .countdown-number {
-        font-size: 24px;
+        font-size: 18px;
     }
     
     .countdown-separator {
-        font-size: 16px;
+        font-size: 14px;
     }
     
     .election-title {
-        font-size: 18px;
+        font-size: 16px;
+    }
+    
+    .main-title {
+        font-size: 32px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
     }
 }

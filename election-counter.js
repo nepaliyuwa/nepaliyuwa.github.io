@@ -1,6 +1,6 @@
 // Election countdown timer
 function updateCountdown() {
-    const electionDate = new Date('March 5, 2026 00:00:00').getTime();
+    const electionDate = new Date('2026-03-04T18:15:00Z').getTime();
     const now = new Date().getTime();
     const timeLeft = electionDate - now;
 

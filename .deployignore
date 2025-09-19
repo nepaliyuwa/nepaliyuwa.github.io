@@ -1,0 +1,11 @@
+.gitignore
+.github
+README
+README.md
+readme.md
+readme
+*.env
+*.log
+node_modules
+docs
+.deployignore
